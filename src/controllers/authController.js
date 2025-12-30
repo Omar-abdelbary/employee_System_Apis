@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
+const Employee = require("../models/Employee");
 
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -58,7 +59,7 @@ const loginUser = async (req, res, next) => {
 
     if (user && (await user.matchPassword(password))) {
       res.json({
-        message: "User registered successfully",
+        message: "User login successfully",
         data: {
           _id: user._id,
           userName: user.userName,
